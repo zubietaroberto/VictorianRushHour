@@ -76,20 +76,13 @@ void GameLayer::onTouchesEnded(std::vector<Touch*> pTouches, Event* event) {
 
 void GameLayer::createGameScreen() {
 
-	Sprite * quickSprite = Sprite::create("blank.png");
-	quickSprite->setTextureRect(Rect(0, 0, 100, 100));
-	quickSprite->setColor(Color3B(255, 255, 255));
-
-	quickSprite->setPosition(Vec2(_screenSize.width * 0.5, _screenSize.height * 0.5));
-	this->addChild(quickSprite);
-
-	/*_gameBatchNode = CCSpriteBatchNode::create("blank.png", 200);
+	_gameBatchNode = SpriteBatchNode::create("blank.png", 200);
 	this->addChild(_gameBatchNode, kMiddleground);
 
-	_terrain = Terrain::create();
+	_terrain = CustomTerrain::create();
 	_gameBatchNode->addChild(_terrain, kMiddleground);
 
 	_player = Player::create();
-	_gameBatchNode->addChild(_player, kBackground);*/
+	_gameBatchNode->addChild(_player, kBackground);
 
 }

@@ -17,7 +17,7 @@ typedef enum {
 class GameLayer : public cocos2d::CCLayer
 {
 
-	Terrain * _terrain;
+	CustomTerrain * _terrain;
 	Player * _player;
 
 	SpriteBatchNode * _gameBatchNode;
