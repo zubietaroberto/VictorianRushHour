@@ -10,7 +10,7 @@ Block::~Block() {
 Block::Block() {
 
 	//get screen size
-	_screenSize = CCDirector::sharedDirector()->getWinSize();
+	_screenSize = Director::getInstance()->getWinSize();
 	_tileWidth = _screenSize.width / TILE_W_SIZE;
 	_tileHeight = _screenSize.height / TILE_H_SIZE;
 
@@ -40,4 +40,3 @@ void Block::initBlock() {
 
 
 }
-

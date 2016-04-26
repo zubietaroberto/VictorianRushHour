@@ -1,9 +1,8 @@
-#ifndef __GAMESCENE_H__
-#define __GAMESCENE_H__
+#pragma once
 
 #include "cocos2d.h"
-#include "Terrain.h"
-#include "Player.h"
+#include "Terrain.hpp"
+#include "Player.hpp"
 
 USING_NS_CC;
 
@@ -21,9 +20,9 @@ class GameLayer : public cocos2d::CCLayer
 	Terrain * _terrain;
 	Player * _player;
 
-	CCSpriteBatchNode * _gameBatchNode;
+	SpriteBatchNode * _gameBatchNode;
 
-	CCSize _screenSize;
+	Size _screenSize;
 
 	bool _running;
 	int _speedIncreaseInterval;
@@ -41,18 +40,13 @@ public:
 	virtual bool init();
 
 	// there's no 'id' in cpp, so we recommend to return the class instance pointer
-	static cocos2d::CCScene* scene();
+	static cocos2d::Scene* scene();
 
 	// preprocessor macro for "static create()" constructor ( node() deprecated )
 	CREATE_FUNC(GameLayer);
 
 	void update(float dt);
 
-	virtual void ccTouchesBegan(CCSet* pTouches, CCEvent* event);
-	virtual void ccTouchesEnded(CCSet* pTouches, CCEvent* event);
+	virtual void onTouchesBegan(std::vector<Touch*> pTouches, Event* event);
+	virtual void onTouchesEnded(std::vector<Touch*> pTouches, Event* event);
 };
-
-
-#endif // __GAMESCENE_H__
-
-

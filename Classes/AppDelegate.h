@@ -6,18 +6,16 @@
 //  Copyright __MyCompanyName__ 2012. All rights reserved.
 //
 
-#ifndef  _APP_DELEGATE_H_
-#define  _APP_DELEGATE_H_
+#pragma once
 
-#include "CCApplication.h"
+#include "cocos2d.h"
 
 /**
 @brief    The cocos2d Application.
 
 The reason to implement with private inheritance is to hide some interface details of CCDirector.
 */
-class  AppDelegate : private cocos2d::CCApplication
-{
+class AppDelegate: private cocos2d::Application{
 public:
 	AppDelegate();
 	virtual ~AppDelegate();
@@ -41,6 +39,3 @@ public:
 	*/
 	virtual void applicationWillEnterForeground();
 };
-
-#endif // _APP_DELEGATE_H_
-

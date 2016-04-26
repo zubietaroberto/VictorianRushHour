@@ -9,10 +9,10 @@ GameLayer::~GameLayer() {
 
 }
 
-CCScene* GameLayer::scene()
+Scene* GameLayer::scene()
 {
 	// 'scene' is an autorelease object
-	CCScene *scene = CCScene::create();
+	Scene *scene = Scene::create();
 
 	// 'layer' is an autorelease object
 	GameLayer *layer = GameLayer::create();
@@ -29,19 +29,22 @@ bool GameLayer::init()
 {
 	//////////////////////////////
 	// 1. super init first
-	if (!CCLayer::init()) {
+	if (!Layer::init()) {
 		return false;
 	}
 
 	//get screen size
-	_screenSize = CCDirector::sharedDirector()->getWinSize();
+	_screenSize = Director::getInstance()->getWinSize();
 
 	createGameScreen();
 
 	resetGame();
 
-	//listen for touches
-	this->setTouchEnabled(true);
+	// Build Multitouch event Listener
+	auto listener = EventListenerTouchAllAtOnce::create();
+	listener->onTouchesBegan = CC_CALLBACK_2(GameLayer::onTouchesBegan, this);
+	listener->onTouchesEnded = CC_CALLBACK_2(GameLayer::onTouchesEnded, this);
+	_eventDispatcher->addEventListenerWithSceneGraphPriority(listener, this);
 
 	//create main loop
 	this->schedule(schedule_selector(GameLayer::update));
@@ -63,21 +66,21 @@ void GameLayer::update(float dt) {
 
 }
 
-void GameLayer::ccTouchesBegan(CCSet* pTouches, CCEvent* event) {
+void GameLayer::onTouchesBegan(std::vector<Touch*> pTouches, Event* event) {
 
 }
 
-void GameLayer::ccTouchesEnded(CCSet* pTouches, CCEvent* event) {
+void GameLayer::onTouchesEnded(std::vector<Touch*> pTouches, Event* event) {
 
 }
 
 void GameLayer::createGameScreen() {
 
-	CCSprite * quickSprite = CCSprite::create("blank.png");
-	quickSprite->setTextureRect(CCRectMake(0, 0, 100, 100));
-	quickSprite->setColor(ccc3(255, 255, 255));
+	Sprite * quickSprite = Sprite::create("blank.png");
+	quickSprite->setTextureRect(Rect(0, 0, 100, 100));
+	quickSprite->setColor(Color3B(255, 255, 255));
 
-	quickSprite->setPosition(ccp(_screenSize.width * 0.5, _screenSize.height * 0.5));
+	quickSprite->setPosition(Vec2(_screenSize.width * 0.5, _screenSize.height * 0.5));
 	this->addChild(quickSprite);
 
 	/*_gameBatchNode = CCSpriteBatchNode::create("blank.png", 200);
