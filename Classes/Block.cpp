@@ -33,6 +33,38 @@ Block * Block::create() {
 
 void Block::setupBlock(int width, int height, int type) {
 
+	_type = type;
+	_width = width * _tileWidth;
+	_height = height * _tileHeight;
+
+	this->setAnchorPoint(Vec2(0, 0));
+	this->setTextureRect(Rect(0, 0, _width, _height));
+
+	switch(type){
+
+	case kBlockGap:
+		this->setVisible(false);
+		return;
+
+	case kBlock1:
+		this->setColor(Color3B(200, 200, 200));
+		break;
+
+	case kBlock2:
+		this->setColor(Color3B(150, 150, 150));
+		break;
+
+	case kBlock3:
+		this->setColor(Color3B(100, 100, 100));
+		break;
+
+	case kBlock4:
+		this->setColor(Color3B(050, 050, 050));
+		break;
+
+	}
+
+	this->setVisible(true);
 
 }
 
