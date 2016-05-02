@@ -216,7 +216,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Classes\AppDelegate.h" />
-    <ClInclude Include="..\..\Classes\HelloWorldScene.h" />
+    <ClInclude Include="..\..\Classes\Block.hpp" />
+    <ClInclude Include="..\..\Classes\GameLayer.hpp" />
+    <ClInclude Include="..\..\Classes\GameSprite.hpp" />
+    <ClInclude Include="..\..\Classes\Player.hpp" />
+    <ClInclude Include="..\..\Classes\Terrain.hpp" />
     <ClInclude Include="App.xaml.h">
       <DependentUpon>App.xaml</DependentUpon>
     </ClInclude>
@@ -240,7 +244,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Classes\AppDelegate.cpp" />
-    <ClCompile Include="..\..\Classes\HelloWorldScene.cpp" />
+    <ClCompile Include="..\..\Classes\Block.cpp" />
+    <ClCompile Include="..\..\Classes\GameLayer.cpp" />
+    <ClCompile Include="..\..\Classes\GameSprite.cpp" />
+    <ClCompile Include="..\..\Classes\Player.cpp" />
+    <ClCompile Include="..\..\Classes\Terrain.cpp" />
     <ClCompile Include="App.xaml.cpp">
       <DependentUpon>App.xaml</DependentUpon>
     </ClCompile>
