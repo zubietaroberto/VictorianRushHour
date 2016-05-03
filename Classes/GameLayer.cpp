@@ -68,10 +68,36 @@ void GameLayer::update(float dt) {
 
 void GameLayer::onTouchesBegan(std::vector<Touch*> pTouches, Event* event) {
 
+	if (pTouches.size() < 1) return;
+	Touch* touch = pTouches.front();
+
+	if(!_running){
+		if(_player->getState() == kPlayerDying){
+			_terrain->reset();
+			_player->reset();
+			resetGame();
+		}
+
+		return;
+	}
+
+	if (touch){
+		if(!_terrain->getStartTerrain()){
+			_terrain->setStartTerrain(true);
+			return;
+		}
+
+		if (_player->getState() == kPlayerFalling){
+			_player->setFloating(_player->getFloating()? false : true);
+		} else {
+			if (_player->getState() != kPlayerDying) _player->setJumping(true);
+			return;
+		}
+	}
 }
 
 void GameLayer::onTouchesEnded(std::vector<Touch*> pTouches, Event* event) {
-
+	_player->setJumping(false);
 }
 
 void GameLayer::createGameScreen() {
